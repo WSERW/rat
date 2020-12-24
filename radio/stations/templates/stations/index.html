@@ -1,0 +1,15 @@
+{% extends "stations/base.html" %}
+{% load static %}
+{% block content %}
+    <div id="main" class="product-list">
+        <h1>Stations</h1>
+        {% for station in stations %}
+            <div class="item">
+                <a class="item_link" href="{{ station.get_absolute_url }}"></a>
+                <img class="item_image" src="{% if station.image %}{{ station.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                <p class="item_name">{{ station.name }}</p><br>
+                <p class="item_frequency">{{ station.frequency }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

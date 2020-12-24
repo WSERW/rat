@@ -1,0 +1,21 @@
+{% extends "stations/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="station-detail">
+        <img class="station_img" src="{% if station.image %}{{ station.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        <h1>{{ station.name }}</h1>
+        <p class="frequency">{{ station.frequency }}</p>
+        {% for track in tracks %}
+            <div class="track">
+                <img class="track_image" src="{% if track.image %}{{ track.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                <div class="track_descriptions">
+                    <span class="track_name">Track: {{ track.name }}</span>
+                    <span class="track_album">Album: {{ track.album }}</span>
+                    <span class="track_singer">Artist: {{ track.singer }}</span>
+                    <span class="track_ganre">Ganre: {{ track.ganre }}</span>
+                    <span class="track_duration">{{ track.duration }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
