@@ -35,6 +35,7 @@ body{
 }
 .item_image,.item_name,.item_frequency,.item_link{
     position: absolute;
+    white-space: nowrap;
 }
 .item_name,.item_frequency{
     top: 30%;

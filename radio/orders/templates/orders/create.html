@@ -1,0 +1,11 @@
+{% extends "stations/base.html" %}
+{% block content %}
+    <h1>Checkout</h1>
+    <div class="order-info">
+        <h3>Order the track you like</h3>
+    <form action="." method="post" class="order-form">
+        {{ form.as_p }}
+        <p><input type="submit" value="Get the track"></p>
+        {% csrf_token %}
+    </form>
+{% endblock %}

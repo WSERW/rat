@@ -1,5 +1,97 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+.logo{
+    font-size: 72px;
+    color: cadetblue;
+    text-decoration: none;
+}
+.item{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+    z-index: 2;
+}
+.item::before{
+    content:'';
+    display: block;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.3s;
+}
 .item img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.item_image,.item_name,.item_frequency,.item_link{
+    position: absolute;
+    white-space: nowrap;
+}
+.item_name,.item_frequency{
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,150px);
+    /* display: none; */
+    transition: 0.3s;
+    color: white;
+    z-index: 2;
+}
+.item_frequency{
+    top:50%;
+}
+.item_link{
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    z-index: 3;
+}
+
+.item:hover .item_name,.item:hover .item_frequency{
+    display: inline-block;
+    transform: translate(-50%);
+}
+.item:hover::before{
+    opacity: 1;
+}
+
+
+/* details */
+
+.station_img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.track{
+    height: 150px;
+    width: 600px;
+    background-color: darkgrey;
+    display: flex;
+}
+
+.track_image{
+    flex-grow:1;
+    flex-basis: 30%;
     height: 150px;
     width: 150px;
     object-fit: cover;
+}
+.track_descriptions{
+    flex-grow:1;
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }

@@ -3,11 +3,11 @@ from django.urls import reverse
 
 # Create your models here.
 
+
 class Station(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
     image = models.ImageField(upload_to='stations', blank=True)
-    
     frequency = models.FloatField()
 
     class Meta:
@@ -35,12 +35,15 @@ class Singer(models.Model):
 
 class Track(models.Model):
     name = models.CharField(max_length=40, db_index=True)
-    album = models.CharField(max_length=40)
+    album = models.CharField(max_length=40, default='-')
     singer = models.ForeignKey(Singer, related_name='traks', on_delete=models.CASCADE)
-    ganre = models.CharField(max_length=30)
-    duration = models.DurationField()
+    ganre = models.CharField(max_length=30, default='-')
+    duration = models.DurationField(null=True)
     station = models.ForeignKey(Station, related_name='traks', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='{}/traks'.format(station), blank=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         ordering = ('name',)
